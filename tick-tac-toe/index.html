@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TickTacToe</title>
+    
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel='stylesheet' href="main.css">
+</head>
+<body>
+	
+	<div class="container">
+	
+		<div class="header">
+			<h1>Tick Tac Toe</h1>
+			<hr>
+		</div>
+		
+		<div class="col-md-3 col-sm-3 col-lg-2" id="left-side">
+			<button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#info">Get started</button>
+			<div id="info" class="collapse">
+				<i class="fa fa-coffee"></i>This game is too easy
+				<br>Just do it <i class="fa fa-smile-o"></i>
+			</div>
+			<hr>
+			<!-- Trigger Modal-->
+			<button type="button" class="btn btn-success btn-lg" id="triggerModal">Game On <i class="fa fa-bolt"></i>
+			</button>
+			<hr>
+			<!-- Toggler -->
+			<button class="btn btn-info btn-default" id="ruleButton" onclick="showRule()">Game Rule <i class="fa fa-code"></i>
+			</button>
+			<hr>
+			<div class="toggler">
+				<div id="gameRule" class="ui-widget-content ui-corner-all">
+					<h3>Rules</h3>
+					Have three in a row, in any direction!!
+					<img src="http://www.pleated-jeans.com/wp-content/uploads/2013/01/canisso.jpg">
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="col-md-6 col-sm-5 col-lg-6">
+			<!-- Game Canvas -->
+			<canvas id="myCanvas" width="320" height="320" >
+			</canvas>
+		</div>
+		
+		<div class="col-md-3 col-sm-4 col-lg-4" id="right-side">
+			<button id="reload" class="btn btn-success btn-lg disabled" >Next Round <i class="fa fa-forward"></i>
+			</button>
+			<div id="gameStatus">
+				WELCOME!! <br> to Tick Tac Toe <br> Have fun & Enjoy <i class="fa fa-smile-o"></i>
+			</div>
+			<div id="tableScore">
+				<table>
+					<tr><th id="name1" >Player</th><th id="name2" >PC</th><th>		Draw 		 </th></tr>
+					<tr><td id="score1">0     </td><td id="score2">0 </td><td id="drawScore">0   </td></tr>
+				</table>
+			</div>
+		</div>
+	</div>
+		
+	<!-- Modal for user input-->
+	<div id="userInput" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="padding:35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><i class="fa fa-fire"></i>Character setting</h4>
+				</div>
+				<div class="modal-body" style="padding: 40px 50px">
+					<form role="form">
+						<input type="radio" name="playMode" id="computer" value="AUTO_ON" checked><label for="computer">1 vs CPU</label>
+						<input type="radio" name="playMode" id="human" value="AUTO_OFF"><label for="human">1 vs 1</label>
+						<!-- Player 1 input-->
+						<div class="form-group">
+							<label for="username"><i class="glyphicon glyphicon-user"></i> Player 1</label>
+							<div id="nameError"></div>
+							<input type="text" class="form-control" id="username" placeholder="Player name">
+						</div>
+						<div class="form-group">
+							<div id="choiceError"></div>
+							<label><i class="glyphicon glyphicon-eye-open"></i> Choice</label>
+							<label for="choice_X"><i class="fa fa-times fa-2x"></i></label><input type="radio" name="choice" id="choice_X">
+							<label for="choice_O"><i class="fa fa-opera fa-2x"></i></label><input type="radio" name="choice" id="choice_O">
+							<label for="moveFirst">Move First?</label><input type="checkbox" id="moveFirst">
+						</div>
+						<!-- End Player 1 input -->
+						<!-- This is only displayed on 1vs1 mode-->
+						<div class="form-group" id="player2Input">
+							<label for="username"><i class="glyphicon glyphicon-user"></i> Player 2</label>
+							<div id="nameError2"></div>
+							<input type="text" class="form-control" id="username2" placeholder="Player name" value="PC">
+						</div>
+						<!-- End player 2 input-->
+						<button type="button" id="triggerGame" class="btn btn-success btn-block"><i></i>Let's Play</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+						<i class="glyphicon glyphicon-remove"></i>Cancel
+					</button>
+					<p>Free Game is best!!</p>
+				</div>
+			</div>
+			<!-- End Modal content-->
+		</div>
+	</div>
+	
+	<!--End Modal-->
+	
+	
+	
+	<!-- JavaScript under so as to load faster-->
+	<!-- import normal things-->
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="Config.js"></script>
+	<script src="Player.js"></script>
+	<script src="GameBoard.js"></script>
+	<script src="CanvasController.js"></script>
+	<script src="GameController.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>

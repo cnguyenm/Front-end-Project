@@ -1,0 +1,99 @@
+body {
+	background: url("https://s17-us2.ixquick.com/cgi-bin/serveimage?url=http%3A%2F%2Fwww.dualimg.com%2Fwp-content%2Fwallpapers%2F20130103%2Fuyx53yfhzsn448.jpg&sp=7659e915d420fb8b16c2be9fdc3ec97c") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+}
+
+hr {
+	width: 80%;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.container {
+	width: 100%;
+	position: absolute;
+}
+.header {
+	width: 100%;
+	height:150px;
+	text-align:center;
+	padding-top: 30px;
+}
+.header h1 {
+	font-family: 'Allura', cursive;
+	font-weight: bold;
+	font-size: 55px;
+	text-transform: uppercase;
+	color: blue;
+	letter-spacing: 3px;
+	text-shadow: 1px 1px 2px #000;
+}
+
+#left-side {
+	text-align: left;
+}
+.toggler {
+	position: absolute;
+	margin-left: -20px;
+}
+#gameRule {
+	border: 1px solid black;
+	display: none;
+	line-height: 25px;
+	width: 200px;
+	height: 300px;
+	
+}
+#gameRule h3 {
+	text-align: center;
+}
+#gameRule img {
+	width: 200px;
+}
+
+#right-side {
+	text-align: center;
+}
+#gameStatus {
+	border: 1px solid black;
+	margin: 10px 0;
+	height: 75px;
+	overflow: auto;
+}
+#tableScore {
+	margin-top: 25px;
+	width: 100%;
+}
+#tableScore table {
+	border: 1px solid black;
+	width: 100%;
+}
+#tableScore th, #tableScore td {
+	border: 1px solid black;
+	height: 30px;
+	text-align: center;
+}
+
+#myCanvas {
+	border: 1px solid black;
+}
+.modal-header, h4, .close {
+	background-color: #5cb85c;
+	color: white !important;
+	text-align: center;
+	font-size: 36px;
+}
+.modal-footer {
+	background-color: #f9f9f9;
+}
+#choiceError, #nameError, #nameError2 {
+	color: red;
+	margin: 3px;
+}
+#choice_X, #choice_O {
+	padding: 10x;
+}
